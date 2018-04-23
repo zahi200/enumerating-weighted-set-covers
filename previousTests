@@ -1,0 +1,197 @@
+***********************************************************************************
+simple, 1 skill, 2 experts
+***********************************************************************************
+ public static void main (String[] args){
+        // SKILLS
+        Skill s1 = new Skill();
+        Skill s2 = new Skill();
+
+        Set<Skill> requiredSkills = new HashSet<Skill>(Arrays.asList(s1));
+
+        // EXPERTS
+        Set<Skill> e1Skills = new HashSet<Skill>(Arrays.asList(s1));
+        Expert e1 = new Expert(5, e1Skills, "e1");
+
+        Set<Skill> e2Skills = new HashSet<Skill>(Arrays.asList(s1));
+        Expert e2 = new Expert(2, e2Skills, "e2");
+
+        Set<Expert> availableExpert = new HashSet<Expert>(Arrays.asList(e1,e2));
+
+        TeamsEnumeration enumerator = new TeamsEnumeration(availableExpert, requiredSkills);
+
+        enumerator.enumerate();
+
+    }
+
+***********************************************************************************
+simple, 1 skill, 3 experts
+***********************************************************************************
+    public static void main (String[] args){
+        // SKILLS
+        Skill s1 = new Skill();
+        Skill s2 = new Skill();
+
+        Set<Skill> requiredSkills = new HashSet<Skill>(Arrays.asList(s1));
+
+        // EXPERTS
+        Set<Skill> e1Skills = new HashSet<Skill>(Arrays.asList(s1));
+        Expert e1 = new Expert(5, e1Skills, "e1");
+
+        Set<Skill> e2Skills = new HashSet<Skill>(Arrays.asList(s1));
+        Expert e2 = new Expert(2, e2Skills, "e2");
+
+        Set<Skill> e3Skills = new HashSet<Skill>(Arrays.asList(s1));
+        Expert e3 = new Expert(3, e3Skills, "e3");
+
+        Set<Expert> availableExpert = new HashSet<Expert>(Arrays.asList(e1,e2,e3));
+
+        TeamsEnumeration enumerator = new TeamsEnumeration(availableExpert, requiredSkills);
+
+        enumerator.enumerate();
+
+    }
+
+***********************************************************************************
+simple, 1 skill, 4 experts, big team might be better then singleton
+***********************************************************************************
+    public static void main (String[] args){
+            // SKILLS
+            Skill s1 = new Skill();
+            Skill s2 = new Skill();
+
+            Set<Skill> requiredSkills = new HashSet<Skill>(Arrays.asList(s1));
+
+            // EXPERTS
+            Set<Skill> e1Skills = new HashSet<Skill>(Arrays.asList(s1));
+            Expert e1 = new Expert(11, e1Skills, "e1");
+
+            Set<Skill> e2Skills = new HashSet<Skill>(Arrays.asList(s1));
+            Expert e2 = new Expert(2, e2Skills, "e2");
+
+            Set<Skill> e3Skills = new HashSet<Skill>(Arrays.asList(s1));
+            Expert e3 = new Expert(3, e3Skills, "e3");
+
+            Set<Skill> e4Skills = new HashSet<Skill>(Arrays.asList(s1));
+            Expert e4 = new Expert(4, e4Skills, "e4");
+
+            Set<Expert> availableExpert = new HashSet<Expert>(Arrays.asList(e1,e2,e3,e4));
+
+            TeamsEnumeration enumerator = new TeamsEnumeration(availableExpert, requiredSkills);
+
+            enumerator.enumerate();
+
+        }
+
+ ***********************************************************************************
+ 3 skills, 4 experts, 11 results total (the order of the results is not monotone)
+ ***********************************************************************************
+ public static void main (String[] args){
+        // SKILLS
+        Skill s1 = new Skill();
+        Skill s2 = new Skill();
+        Skill s3 = new Skill();
+
+        Set<Skill> requiredSkills = new HashSet<Skill>(Arrays.asList(s1,s2,s3));
+
+        // EXPERTS
+        Set<Skill> e1Skills = new HashSet<Skill>(Arrays.asList(s1));
+        Expert e1 = new Expert(1, e1Skills, "e1");
+
+        Set<Skill> e2Skills = new HashSet<Skill>(Arrays.asList(s1,s2));
+        Expert e2 = new Expert(4, e2Skills, "e2");
+
+        Set<Skill> e3Skills = new HashSet<Skill>(Arrays.asList(s1,s2,s3));
+        Expert e3 = new Expert(9, e3Skills, "e3");
+
+        Set<Skill> e4Skills = new HashSet<Skill>(Arrays.asList(s2,s3));
+        Expert e4 = new Expert(8, e4Skills, "e4");
+
+        Set<Expert> availableExpert = new HashSet<Expert>(Arrays.asList(e1,e2,e3,e4));
+
+
+        TeamsEnumeration enumerator = new TeamsEnumeration(availableExpert, requiredSkills);
+        enumerator.enumerate();
+    }
+
+***********************************************************************************
+7 skills, 7 experts, 5 results (e3 e4 e5 e6 must be in any result)
+***********************************************************************************
+public static void main (String[] args){
+    // SKILLS
+    Skill s1 = new Skill();
+    Skill s2 = new Skill();
+    Skill s3 = new Skill();
+    Skill s4 = new Skill();
+    Skill s5 = new Skill();
+    Skill s6 = new Skill();
+    Skill s7 = new Skill();
+
+    Set<Skill> requiredSkills = new HashSet<Skill>(Arrays.asList(s1,s2,s3,s4,s5,s6,s7));
+
+    // EXPERTS
+    Set<Skill> e1Skills = new HashSet<Skill>(Arrays.asList(s1,s7,s2));
+    Expert e1 = new Expert(1, e1Skills, "e1");
+
+    Set<Skill> e2Skills = new HashSet<Skill>(Arrays.asList(s2));
+    Expert e2 = new Expert(2, e2Skills, "e2");
+
+    Set<Skill> e3Skills = new HashSet<Skill>(Arrays.asList(s3));
+    Expert e3 = new Expert(3, e3Skills, "e3");
+
+    Set<Skill> e4Skills = new HashSet<Skill>(Arrays.asList(s4));
+    Expert e4 = new Expert(4, e4Skills, "e4");
+
+    Set<Skill> e5Skills = new HashSet<Skill>(Arrays.asList(s5));
+    Expert e5 = new Expert(5, e5Skills, "e5");
+
+    Set<Skill> e6Skills = new HashSet<Skill>(Arrays.asList(s6));
+    Expert e6 = new Expert(6, e6Skills, "e6");
+
+    Set<Skill> e7Skills = new HashSet<Skill>(Arrays.asList(s7,s1));
+    Expert e7 = new Expert(7, e7Skills, "e7");
+
+    Set<Expert> availableExpert = new HashSet<Expert>(Arrays.asList(e1,e2,e3,e4,e5,e6,e7));
+
+
+    TeamsEnumeration enumerator = new TeamsEnumeration(availableExpert, requiredSkills);
+    enumerator.enumerate();
+}
+
+***********************************************************************************
+4 skills, 6 experts, 7 results (pair of skill for each )
+***********************************************************************************
+
+        // SKILLS
+        Skill s1 = new Skill("s1");
+        Skill s2 = new Skill("s2");
+        Skill s3 = new Skill("s3");
+        Skill s4 = new Skill("s4");
+//        Skill s5 = new Skill("s5");
+//        Skill s6 = new Skill("s6");
+//        Skill s7 = new Skill("s7");
+
+        Set<Skill> requiredSkills = new HashSet<Skill>(Arrays.asList(s1,s2,s3,s4));
+
+        // EXPERTS
+        Set<Skill> e1Skills = new HashSet<Skill>(Arrays.asList(s1,s2));
+        Expert e1 = new Expert(1, e1Skills, "e1");
+
+        Set<Skill> e2Skills = new HashSet<Skill>(Arrays.asList(s1,s3));
+        Expert e2 = new Expert(2, e2Skills, "e2");
+
+        Set<Skill> e3Skills = new HashSet<Skill>(Arrays.asList(s1,s4));
+        Expert e3 = new Expert(3, e3Skills, "e3");
+
+        Set<Skill> e4Skills = new HashSet<Skill>(Arrays.asList(s2,s3));
+        Expert e4 = new Expert(4, e4Skills, "e4");
+
+        Set<Skill> e5Skills = new HashSet<Skill>(Arrays.asList(s2,s4));
+        Expert e5 = new Expert(5, e5Skills, "e5");
+
+        Set<Skill> e6Skills = new HashSet<Skill>(Arrays.asList(s3,s4));
+        Expert e6 = new Expert(6, e6Skills, "e6");
+
+//        Set<Skill> e7Skills = new HashSet<Skill>(Arrays.asList(s7,s1));
+//        Expert e7 = new Expert(7, e7Skills, "e7");
+
+        LinkedHashSet<Expert> availableExpert = new LinkedHashSet<Expert>(Arrays.asList(e1,e2,e3,e4,e5,e6));
